@@ -34,24 +34,11 @@ class Track {
 		}
 		
 		
-		~Track() {
-			"Track d-tor...\n";
-//			delete TrackName;
-//			delete Date;
-//			delete Len;
-		}
-		
 		void PrintInfo( string TName ) {
-			cout << "PrintInfo\n";
-//			for(int i = 1 ; i < 6; i++) cout << &TrackName << " ";
-			cout << "Printing...\n" << "TrackName is " << TName << "\n";
+			cout << "Printing...\n";
 			if ( Date->tm_mday > 31) Date->tm_mday = 0;
-//			int size = sizeof( TrackName[Size] ) / sizeof( TrackName[0] );
-//			cout << size;
 
 			for( int i = 0; i < TracksCount; i++ ) {
-//				cout << "TrackName[i]: " << TrackName[i] << " Tname: " << TName << "\n";
-//				cout << Date[i].tm_year << "\n"
 				if( *(TrackName + i) == TName ) {
 					cout << "Track name: " << TrackName[i] << endl;
 					cout <<"Date: " << Date[i].tm_year << "/" << Date[i].tm_mon << "/" << Date[i].tm_mday << endl;
@@ -80,11 +67,9 @@ class Track {
 					SS << line;
 				}
 				while( SS >> Word ) {
-//					cout << Word << "\n";
 //						
-					if( Word == "Name:" )  { // fix names can be longer and with indents
+					if( Word == "Name:" )  { 
 						SS >> name[words];
-//						cout << name[words] << ' ';
 						TrackName[names] = name[words];
 						names++;
 						TracksCount = names;
@@ -92,42 +77,25 @@ class Track {
 					else if( Word == "Year:") {
 						SS >> y[words];	
 						Date[years].tm_year = stoi( y[words] );
-//						cout <<Date[years].tm_year << " ";
 						years++;
 					}
 					else if( Word == "Month:"){
 						SS >> m[words];
 						Date[months].tm_mon = stoi( m[words] );
-//						cout << stoi( m[words] ) << ' ';
 						months++;
 					} 
 					else if( Word == "Day:"){
 						SS >> d[words];
 						Date[days].tm_mday = stoi( d[words] );
-//						cout << stoi( d[words] ) << ' ';
 						days++;
 					} 
 					else if( Word == "Length:"){
 						SS >> len[words];
 						Len[length].tm_sec = stoi( len[words] );
-//						cout << stoi( len[words] ) << ' ';
 						length++;
 					} 
 					else words++;
 				}
-				
-//				cout << "\n!!!TrackName[i]: " << TrackName[6] <<"\n";
-//				cout << name[0] << " " << stoi( y[0] ) << " " << stoi( m[0] ) << "\n";
-				
-//				Date->tm_year = stoi( y[0] );
-//				Date->tm_mon = stoi(m[0]);
-//				Date->tm_mday = stoi( d[0] );
-//
-//				Len[0].tm_sec = stoi( len[0] );
-//
-//				TrackName[0] = name[0];
-//				cout << TrackName[0];
-//				cout <<"Size is " <<  TrackName->size();
 
 			}
 			else cout << "no such file or directory!\n";
@@ -164,15 +132,14 @@ class Player : public Track {
 				cout << "Pause\n";
 				Paused = true;
 			} 
-			else if( !Playing ) cout << "Not playing\n";// && Paused || !Playing && // || !Paused
+			else if( !Playing ) cout << "Not playing\n";
 			else if( Paused ) cout << "Already paused\n";
 		}
 		
 		void next() {
 			cout << "Next---->\n";
 			int R = rand() % T->GetTracks();
-//			cout << "Stopp= " << Stopped << "\n";
-			if( !Playing  ) { // && !Stopped
+			if( !Playing  ) { 
 				t_name = T->GetName(R);
 				cout << T->GetName(R) << endl;
 				Next = true;
@@ -208,21 +175,9 @@ class Player : public Track {
 
 int main() {
 	srand(time(0));
-//	tm *inf = new tm;
-//	tm *len = new tm;
-//	inf->tm_year = 1999;
-//	inf->tm_mon = 11;
-//	inf->tm_mday = 1;
-//	len->tm_sec = 190;
-	
 //	Track T("name1");
 	Track T;
-	Player P(T, "C:\\Users\\Alex_dev\\Desktop\\Prog\\skill\\OOP intro\\Tracks\\Track_info.txt");
-//	P.play("Param pam pam");
-//	Track K;
-//	K.ReadInfo( "C:\\Users\\Alex_dev\\Desktop\\Prog\\skill\\OOP intro\\Tracks\\Track_info.txt" ); //Track_info
-//	K.PrintInfo("name1");
-//	T.ReadInfo( "C:\\Users\\Alex_dev\\Desktop\\Prog\\skill\\OOP intro\\Tracks\\Track_info.txt" );
+	Player P(T, "Track_info.txt");
 
 //	P.play("name8");
 	P.next();
@@ -239,12 +194,4 @@ int main() {
 	P.play();
 	P.exit();
 	
-//	P.PrintInfo("name1");
-//	K.PrintInfo("name1");
 }
-
-
-//map<string, int>::iterator it;
-//				for( it = Info.begin(); it != Info.end(); it++ ){
-////					cout << it->first << " "<< it->second << "\n";
-//				}
