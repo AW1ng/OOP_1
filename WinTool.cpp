@@ -54,19 +54,6 @@ class Window {
 		void display() {
 			
 			int offsety = 0;
-	
-//			for( int i = 0; i < LtcX; i++ ) {
-//				while( offsety <= LtcY){
-//					cout << "0";
-//					offsety++;
-//				}
-//				offsety = 0;
-//				
-//				for( int j = 0; j <= Height - LtcY; j++ ) {
-//					cout << "-";
-//				}
-//				cout << "\n";	
-//			}
 
 			for( int i = 0; i <= ScrWidth ; i++ ) {
 
