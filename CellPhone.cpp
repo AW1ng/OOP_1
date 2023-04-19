@@ -44,7 +44,7 @@ class Phonebook {
 		}
 		
 		map<string, string> Contact; // make protected
-		Phonebook(string name, string number) { // may be array of phonebook release 
+		Phonebook(string name, string number) { 
 			Name = name;
 			PhoneNumber = number;
 		}
@@ -54,7 +54,7 @@ class Phonebook {
 		void Add(string name, string number) { // may be bool
 			Name = name;
 			PhoneNumber = number;
-			if(check_len(PhoneNumber)) Contact.insert(pair<string, string>(Name, "+7" + PhoneNumber) ); // if contact alreadt exist
+			if(check_len(PhoneNumber)) Contact.insert(pair<string, string>(Name, "+7" + PhoneNumber) ); 
 		}
 		
 		void print() {
@@ -107,7 +107,7 @@ class MobilePhone :public Phonebook{
 	protected:
 		Phonebook *PB;
 	public:
-		MobilePhone(Phonebook *pb) { // new phonebook
+		MobilePhone(Phonebook *pb) { 
 			PB = pb;		
 		}
 		
@@ -121,7 +121,7 @@ class MobilePhone :public Phonebook{
 	}
 	
 	
-	string sms(string NameOrNumber) { // if sms length > 20 then create new sms
+	string sms(string NameOrNumber) { // if sms length > 20 than create new sms
 		string smser = "Sending message... ", sms;
 		if( true_name( NameOrNumber ) ){
 			smser = FindByName( NameOrNumber );
@@ -148,48 +148,9 @@ class MobilePhone :public Phonebook{
 //		exit( 0 );
 	}	
 	
-	
-/*	bool Interpret( string command ) {
-		vector<string> Operands = Split(command);
-		string name, number, NameOrNumber;
-			string CommandList[5] = {"add", "call", "sms", "exit", "print"};
-			int comm;
-			for( comm == 0; comm < 5; comm++ ) if (CommandList[comm] == Operands[0]) break;
-			switch( comm ) {
-				case 0:
-					cout << "Name ";
-					cin >> name;
-					cout <<"Number ";
-					cin >> number;
-					Add( name, number );
-					return true;
-					break;
-				case 1:
-					cout << "Enter Name or Number to call\n";
-					cin >> NameOrNumber;
-					Call( NameOrNumber );
-					return true;
-					break;
-				case 2:
-					cout << "Enter Name or Number to sms\n";
-					cin >> NameOrNumber;
-					sms( NameOrNumber );
-					return true;
-					break;
-				case 3:
-					Exit();
-					return false;
-					break;
-				case 4:
-					print();
-					return true;
-			}
-			return true;
-	}// TODO : need to rework
-*/
 
-	bool dialer() { // TODO: fix double view output
-		string Input, Name, Number, NameOrNumber; // array //  map <command> <comment>
+	bool dialer() { 
+		string Input, Name, Number, NameOrNumber; 
 		string Commands[5] = { "add", "sms", "call", "print", "exit" };
 		
 		cout << "your option: \nadd - to add Name and phone number\n" \
@@ -233,47 +194,14 @@ class MobilePhone :public Phonebook{
 
 
 int main() {
-	Phonebook *p = new Phonebook(); // insert to mobilephone
-//	p->Add("Alex", "79055573444");
-//	p->Add("Mex", "79057579484");
-//	p->print();
+	Phonebook *p = new Phonebook();
 
 	MobilePhone *mp = new MobilePhone(p);
 	mp->Add("Alex", "9055573444");
-	
-//	do {
-//	}while( mp->Interpret(com) );
 
 	do {
 		if( !mp->dialer() ) break;
 	}while( mp->dialer());
 	
-	
-//	mp->Add("Alex", "9055573444");
-//	mp->Add("Marina", "9055439436");
-//	mp->Add("Home", "4956163782");
-//	mp->Add("Taxi", "9999999999");	
-
-
-//	cout << mp->Call("Alex");
-//	cout << mp->Call("Home");
-//	cout << mp->sms("Alex");
-//	cout << mp->sms("90653645667");
-//	cout << mp->sms("4956163782");
-//	cout << mp->sms(" ");
-//	cout << mp->sms("9999999999");
-//	cout << mp->sms("Alex", "9055573442");
-//	cout << mp->true_name("");
-
-
-
-//	int command;
-//	while(command != mp->Exit()) {
-//		cout << "choose your option: "
-//	}
-//	cout << mp->FindByNumber("9055573444");
-//	mp->Print();
-//	mp->FindByName("Alex");
-//	cout << mp->call("Alex");
 	delete p; delete mp;
 }
